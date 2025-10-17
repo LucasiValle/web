@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styly.css"><!-- CSS Externo-->
+    <style>
+
+        /*CSS incorporando o Documento*/
+        p{color: blue;}
+
+
+    </style>
+    
+    <title>Css</title>
+</head>
+<body>
+
+    <p style="color: red;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente
+        aspernatur autem fugit ipsa quaerat quisquam, beatae aliquid! Amet officia totam illum at expedita, illo, blanditiis, eum minus modi quas omnis.</p>
+
+        <h1>Formas de declara CSS no Documento</h1>
+        <ul>
+            <li>Externo - por meio da tag &lt; <link rel="stylesheet" href="styly.css"> </li>
+        </ul>
+        <ul>
+            <li>Imcorporando - por meio da tag &lt;styly no cabeçalho do nosso Documento</li>
+        </ul>
+        <ul>
+            <li>Inline - por meio do atributo style em qualquer tag HTML</li>
+        </ul>
+        <ul>
+            <li>** por meio da arvore DOM vai JavaScript (JS)</li>
+        </ul>
+
+<script>
+    let p = document.querySelector("p");
+    p.styly.color = "#FFAABB";
+</script>
+</body>
+</html>
