@@ -3,40 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>*{border: 1px solid
-    black;}
-        img,p{
+    <style>
+        *{border: 1px solid black;}
+        
+        img{
             float: left;
+            width: 100px;
         }
-        html,body{border-color: red;}
-
-        .box{display: inline-block;
+        .box{
+            display: inline-block; /*permite os elementos da box ficarem ao lado*/
+            /*inline-block da para definir a altura e largura*/
             width: 100px;
             height: 100px;
             position: static;
         }
 
-        #box2 {position: relative;
-            top: 30px;
-            left: 30px;
+        #box2{
+            position: relative;
+            top: 100px;
         }
 
-        #box3{position: absolute;
-            
-        }
-    
-        .conteiner{
-            position: relative;
+        #box3{
+            background-color: bisque;
+            position: absolute; /*posicionam ao começo*/
+            top: 1px;
+            left: 10px;
         }
 
         #box4{
             position: fixed;
-            background-color: chartreuse;
-            bottom: 10px;
-            right: 10px;
+            background-color: aqua;
+           /* bottom: 50%;/*bota o box aonde quer*/
+            top: 50%;
+            left: 50%;
+
+            transform: translate(-50%, -50%);
+
+            z-index: 1; /*controla as camadas, bota para baixo o -1, bota pra cima 1*/
+
         }
-    </style>
+
+        .container{
+            position: relative;
+        }
+
+        html, body{border-color: red;}
+        
+
+   </style>
+    
+    <title>Document</title>
 </head>
 <body>
         
