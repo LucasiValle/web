@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            height: 90vh;
+            animation: rotacao 0.01s linear infinite;
+            animation: subir 5s ease-in-out infinite;
+        }
+
+        .box{
+            
+            background-color:rgb(123, 211, 211);
+            border: 20px solid greenyellow;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            font-size: 3rem;
+            animation: rotacao 0.01s linear infinite;
+        }
+
+        #foguete{
+            font-size: 100px;
+            animation: subir 5s ease-in-out infinite;
+        }
+
+        /*@keyframes rotacao {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(-360deg);
+            }
+        }*/
+        @keyframes subir {
+            0% {
+                transform: translateY(100vh);
+            }
+            to {
+                transform: translateY(0vh);
+            }    
+            
+        }
+
+        .box{
+            border-top-color: greenyellow;
+            border-right-color: blue;
+            border-left-color: red;
+            border-bottom-color: pink;
+        }
+
+
+        #item1{order: 4;}
+        #item2{order: 1;}
+        #item3{order: 2;}
+        #item4{order: 3;}
+    </style>
+</head>
+<body>
+   <div class="box" id="item1">1</div>
+    <div class="box" id="item2">2</div>
+    <div class="box" id="item3">3</div>
+    <div class="box" id="item4">4</div>
+
+    <div id="foguete">🚀</div>
+</body>
+</html>
