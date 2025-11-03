@@ -22,12 +22,60 @@
     
     
     
-    
-    
     <img src="Protocolo.png" alt="" width="500px">
 
+    <h2>Exemplo de uma Requisição (Request)</h2>
+  <pre>
+    GET /index.html HTTP/1.1
+    Host: www.exemplo.com
+    User-Agent: Mozilla/5.0
+    Accept: text/html
+  </pre>
 
+  <p><strong>Explicação dos campos:</strong></p>
+  <ul>
+    <li><strong>GET</strong>: método usado (pode ser GET ou POST)</li>
+    <li><strong>/index.html</strong>: página solicitada</li>
+    <li><strong>Host</strong>: endereço do servidor</li>
+    <li><strong>User-Agent</strong>: identifica o navegador</li>
+    <li><strong>Accept</strong>: tipo de conteúdo aceito</li>
+  </ul>
+
+  <h2>Exemplo de uma Resposta (Response)</h2>
+  <pre>
+    HTTP/1.1 200 OK
+    Date: Sat, 02 Nov 2025 15:30:00 GMT
+    Server: Apache
+    Content-Type: text/html
+    Content-Length: 150
+    </pre>
     
+    <p><strong>Explicação dos campos:</strong></p>
+  <ul>
+    <li><strong>HTTP/1.1 200 OK</strong>: versão do protocolo e código de status (200 = sucesso)</li>
+    <li><strong>Date</strong>: data e hora da resposta</li>
+    <li><strong>Server</strong>: servidor usado</li>
+    <li><strong>Content-Type</strong>: tipo de arquivo enviado (HTML, imagem, texto, etc.)</li>
+    <li><strong>Content-Length</strong>: tamanho do conteúdo</li>
+  </ul>
+
+  <h2>Como o HTTP é usado na Web</h2>
+  <p>
+    Quando você digita um endereço como <a href="https://www.google.com" target="_blank">https://www.google.com</a> no navegador:
+  </p>
+  <ol>
+    <li>O navegador envia uma <strong>requisição HTTP</strong> para o servidor do Google.</li>
+    <li>O servidor processa o pedido.</li>
+    <li>Ele devolve uma <strong>resposta HTTP</strong> com o código HTML da página.</li>
+    <li>O navegador exibe a página para o usuário.</li>
+  </ol>
+
+  <h2>Principais métodos HTTP</h2>
+  <ul>
+    <li><strong>GET:</strong> Pede informações do servidor.</li>
+    <li><strong>POST:</strong> Envia dados para o servidor.</li>
+  </ul>
+
 </body>
 </html>
 
