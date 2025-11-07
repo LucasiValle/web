@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+           display: grid;
+           height: 60vh;
+           width: 100vw;
+            
+           grid-template-areas: 
+           "item1 item1 item1 item4 item4 item5 item5 item5"
+           "item1 item1 item1 item4 item4 item5 item5 item5"
+           "item2 item2 item2 item4 item4 item6 item6 item7"
+           "item2 item2 item2 item4 item4 item6 item6 item8"
+           "item3 item3 item3 item3 item3 item6 item6 item9"
+           "item3 item3 item3 item3 item3 item6 item6 item10"  
+           ;
+        }
+
+        .item1{grid-area: item1;}
+        .item2{grid-area: item2;}
+        .item3{grid-area: item3;}
+        .item4{grid-area: item4;}
+        .item5{grid-area: item5;}
+        .item6{grid-area: item6;}
+        .item7{grid-area: item7;}
+        .item8{grid-area: item8;}
+        .item9{grid-area: item9;}
+        .item10{grid-area: item10;}
+
+        .Bolinhas{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        #laranja{
+            background-color: orange
+        }
+
+        #azul{
+            background-color: cadetblue;
+        }
+        #laranja2{
+            background-color: orange
+        }
+        #rosa{
+            background-color: darksalmon;
+        }
+        #azul2{
+            background-color: cadetblue;
+        }
+
+        #verde{
+            background-color: green;
+        }
+
+        #Blaranja{
+            background-color: orange;
+            border-radius: 50%;
+            height: 100px;
+            width: 100px;
+            
+        }
+
+        #Brosa{
+            display: flex;
+            background-color: darksalmon;
+            border-radius: 50%;
+            height: 100px;
+            width: 100px;
+        }
+
+        #Bverde{
+            background-color: green;
+            border-radius: 50%;
+            height: 100px;
+            width: 100px;
+        }
+
+        #Broxo{
+            background-color: darkorchid;
+            border-radius: 50%;
+            height: 100px;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="laranja" class="item item1"></div>
+        <div id= "azul" class="item item2"> </div>
+        <div id="laranja2" class="item item3"></div>
+        <div id="rosa" class="item item4"></div>
+        <div id="azul2" class="item item5"></div>
+        <div id="verde" class="item item6"></div>
+        
+        <div class="Bolinhas">
+            <div id="Blaranja" class="item item7"></div>
+            <div id="Brosa" class="item item8"></div>
+            <div id="Bverde" class="item item9"></div>
+            <div id="Broxo" class="item item10"></div>
+        </div>
+    </div>
+</body>
+</html>
+
+
