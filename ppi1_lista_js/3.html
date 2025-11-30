@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <label for="nome">Nome</label>
+        <input type="text" id="nome">
+        <label for="peso">Peso</label>
+        <input id="peso" type="text"><br>
+        <label for="altura">Altura</label>
+        <input id="altura" type="text"><br>
+        <button>Calcular IMC</button>
+    </div>
+
+    <div id="resultado"></div>
+    
+    <script>
+        
+        b=document.querySelector("button")
+        let inputNome=document.querySelector("#nome");
+        let inputPeso=document.querySelector("#peso");
+        let inputAltura=document.querySelector("#altura")
+
+        b.addEventListener("click",()=>{
+            let nome=inputNome.value; 
+            let peso=Number.parseFloat(inputPeso.value);
+            let altura=Number.parseFloat(inputAltura.value);
+            imc=(peso/(altura*altura)).toFixed(2)
+
+            console.log(nome,imc)
+
+            let resultado = document.getElementById("resultado");
+            resultado.innerHTML=`<p>${nome}, seu IMC é: <strong>${imc}</strong></p>`
+            
+        })
+    </script>
+</body>
+</html>
+
+    
