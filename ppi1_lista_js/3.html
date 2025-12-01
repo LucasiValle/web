@@ -17,6 +17,7 @@
     </div>
 
     <div id="resultado"></div>
+    <p id="classificacao"></p>
     
     <script>
         
@@ -36,6 +37,11 @@
             let resultado = document.getElementById("resultado");
             resultado.innerHTML=`<p>${nome}, seu IMC é: <strong>${imc}</strong></p>`
             
+
+            //Inacabado e errado
+            if (imc < 18.5){
+                classificacao = "Abaixo do peso";
+            }
         })
     </script>
 </body>

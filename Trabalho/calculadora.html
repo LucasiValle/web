@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Calculadora Simples</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 95vh;
+    }
+    .calc {
+      width: 300px;
+    }
+    .display {
+      width: 90%;
+      height: 50px;
+      margin-bottom: 10px;
+      font-size: 28px;
+      text-align: right;
+      padding: 10px; 
+      border: 1px solid #ccc;
+    }
+    
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+    button {
+      padding: 15px;
+      font-size: 18px;
+      border: white;
+      border-radius: 5px;
+      background: #d8d8d8ca;
+    }
+    button.op {
+      background: #d8d8d8ca;
+    }
+    button.equal {
+      grid-row: span 4;
+      background: #4a90ff;
+      color: white;
+      font-size: 22px;
+    }
+  </style>
+</head>
+<body>
+  <div class="calc">
+    <input type="text" id="display" class="display"  />
+
+    <div class="buttons">
+      <button class="op" onclick="addOp('+')">+</button>
+      <button class="op" onclick="addOp('-')">-</button>
+      <button class="op" onclick="addOp('*')">×</button>
+      <button class="op" onclick="addOp('/')">÷</button>
+
+      <button onclick="addNum('7')">7</button>
+      <button onclick="addNum('8')">8</button>
+      <button onclick="addNum('9')">9</button>
+      <button class="equal" onclick="calc()">=</button>
+
+      <button onclick="addNum('4')">4</button>
+      <button onclick="addNum('5')">5</button>
+      <button onclick="addNum('6')">6</button>
+
+      <button onclick="addNum('1')">1</button>
+      <button onclick="addNum('2')">2</button>
+      <button onclick="addNum('3')">3</button>
+
+      <button onclick="addNum('0')">0</button>
+      <button onclick="addNum('.')">.</button>
+      <button onclick="clearDisplay()">C</button>
+    </div>
+  </div>
+
+  <script>
+    const display = document.getElementById('display');
+
+    function addNum(num) {
+      display.value += num;
+    }
+
+    function addOp(op) {
+      if (display.value === '') return;
+      const last = display.value.slice(-1);
+      if ('+-*/'.includes(last)) return;
+      display.value += op;
+    }
+
+    function clearDisplay() {
+      display.value = '';
+    }
+
+    function isSafeExpression(expr) {
+      return /^[0-9+\-*/.]+$/.test(expr);
+    }
+
+    function calc() {
+      let expr = display.value;
+      if (!isSafeExpression(expr)) {
+        alert('Expressão inválida!');
+        return;
+      }
+      try {
+        display.value = eval(expr);
+      } catch {
+        alert('Erro no cálculo!');
+      }
+    }
+  </script>
+</body>
+</html>
