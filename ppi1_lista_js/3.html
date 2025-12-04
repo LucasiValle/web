@@ -40,7 +40,29 @@
 
             //Inacabado e errado
             if (imc < 18.5){
-                classificacao = "Abaixo do peso";
+                classificacao.innerHTML = `<p>Abaixo do peso</p>`;
+
+            }
+            if (18.5 <= imc && imc < 24.9){
+                classificacao.innerHTML = `<p>Peso normal</p>`;
+
+            }
+            if (25 <= imc && imc < 29.9){
+                classificacao.innerHTML = `<p>Sobrepeso</p>`;
+
+            }
+            if (30 <= imc && imc < 34.9){
+                classificacao.innerHTML = `<p>Obesidade grau 1</p>`;
+
+            }
+
+            if (35 <= imc && imc < 39.9){
+                classificacao.innerHTML = `<p>Obesidade grau 2:</p>`;
+
+            }
+            if (imc >= 40){
+                classificacao.innerHTML = `<p>Obesidade grau 3</p>`;
+
             }
         })
     </script>

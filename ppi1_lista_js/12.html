@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    // a) Obter o contexto 2D do canvas
+    const canvas = document.getElementById("meuCanvas");
+    const ctx = canvas.getContext("2d");
+
+    // b) Desenhar um retângulo azul (100x50) em (50, 50)
+    ctx.fillStyle = "blue";
+    ctx.fillRect(50, 50, 100, 50);
+
+    // c) Desenhar um círculo vermelho com raio 30 em (200, 150)
+    ctx.beginPath();
+    ctx.arc(200, 150, 30, 0, Math.PI * 2);
+    ctx.fillStyle = "red";
+    ctx.fill();
+
+    // d) Desenhar texto "Canvas!" em preto na posição (120, 250)
+    ctx.fillStyle = "black";
+    ctx.font = "20px Arial";
+    ctx.fillText("Canvas!", 120, 250);
+
+    </script>
+</body>
+</html>

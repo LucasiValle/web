@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cronômetro</title>
+<style>
+  body {
+    background: #666;
+    color: white;
+    display: flex;
+    height: 95vh;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .timer {
+    font-size: 75px;
+    letter-spacing: 10px;
+  }
+
+  button {
+    margin-top: 20px;
+    padding: 15px 25px;
+    border-radius: 8px;
+    border: white;
+    font-size: 18px;
+  }
+
+  .painel {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    width: 220px;
+    color: rgb(0, 0, 0);
+  }
+
+  .painel h2 {
+    margin-top: 0;
+    text-align: center;
+    
+  }
+
+  .pausas-list {
+    padding-left: 10px;
+  }
+</style>
+</head>
+<body>
+
+<div>
+  <div class="timer" id="Cronômetro">00:00:00</div>
+  <button class="btn" id="btnIniciar">Iniciar</button>
+  <button class="btn" id="btnPause">Pausar</button>
+  <button class="btn" id="btnZera">Zerar</button>
+</div>
+
+<div class="painel">
+  <h2>Paradas</h2>
+  <ol class="pausas-list" id="pausas"></ol>
+</div>
+
+<script>
+ 
+  // VARIÁVEIS DE CONTROLE
+
+  let elapsed = 0;          // Guarda o total de ms já contados (entre pausas)
+  let running = false;      // Indica se está rodando
+
+  const display = document.getElementById("Cronômetro");
+  const pausasList = document.getElementById("pausas");
+
+  
+  // FORMATADOR DE TEMPO
+  
+  function format(ms) {
+    const totalSec = Math.floor(ms / 1000);
+    const h = String(Math.floor(totalSec / 3600)).padStart(2, "0");
+    const m = String(Math.floor((totalSec % 3600) / 60)).padStart(2, "0");
+    const s = String(totalSec % 60).padStart(2, "0"); //padStart(2, "0") garante dois dígitos (ex.: "07").
+
+    return `${h}:${m}:${s}`;
+  }
+
+  // ATUALIZA A INTERFACE
+
+  function updateDisplay() {
+    const now = new Date().getTime();
+    const diff = now - startTime + elapsed;
+    display.textContent = format(diff);
+  }
+
+  // INICIAR
+  
+  function start() {
+    if (running) return; // evita iniciar duas vezes
+
+    running = true;
+
+    // Marca o horário exato do sistema
+    startTime = new Date().getTime();
+
+    // Atualiza a tela continuamente
+    intervalId = setInterval(updateDisplay, 100);
+  }
+
+  // PAUSAR
+  function pause() {
+    if (!running) return;
+
+    running = false;
+
+    // Para o setInterval
+    clearInterval(intervalId);
+
+    // Soma todo tempo já contado à variável elapsed
+    elapsed += new Date().getTime() - startTime;
+
+    // Registra a pausa no painel
+    const li = document.createElement("li");
+    li.textContent = format(elapsed);
+    pausasList.appendChild(li);
+  }
+
+  // ZERAR
+  function reset() {
+    running = false;
+    clearInterval(intervalId);
+
+    elapsed = 0;
+    display.textContent = "00:00:00";
+
+    pausasList.innerHTML = "";
+  }
+
+  
+  // BOTÕES
+  document.getElementById("btnIniciar").onclick = start;
+  document.getElementById("btnPause").onclick = pause;
+  document.getElementById("btnZera").onclick = reset;
+
+  // ATALHOS DO TECLADO
+  document.addEventListener("keydown", e => {
+    if (e.code === "Space") {   // espaço → iniciar/pausar
+      if (running) pause();
+      else start();
+    }
+    if (e.key.toLowerCase() === "p") pause(); // P → pausa
+    if (e.key.toLowerCase() === "r") reset(); // R → zerar
+  });
+</script>
+
+</body>
+</html>

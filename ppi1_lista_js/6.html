@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Verificador de Palíndromo</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f2f2f2;
+    padding: 40px;
+    text-align: center;
+  }
+
+  .box {
+    max-width: 350px;
+    background: white;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #ccc;
+  }
+
+  input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  button {
+    padding: 12px;
+    width: 100%;
+    background: #4CAF50;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 6px;
+  }
+
+  #resultado {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+</style>
+
+</head>
+<body>
+
+<div class="box">
+  <h2>Documento</h2>
+
+  <input type="text" id="palavra" placeholder="Digite uma palavra">
+
+  <button onclick="verificar()">Verificar</button>
+
+  <div id="resultado"></div>
+</div>
+
+<script>
+  function verificar() {
+    const entrada = document.getElementById("palavra").value;
+
+    if (entrada.trim() === "") {
+      document.getElementById("resultado").innerHTML = "Digite uma palavra!";
+      return;
+    }
+
+    let palavra = entrada.toLowerCase().replace(/\s/g, "");
+
+    let invertida = palavra.split("").reverse().join("");
+
+    if (palavra === invertida) {
+      document.getElementById("resultado").innerHTML = `"${entrada}" é um palíndromo ✔`;
+    } else {
+      document.getElementById("resultado").innerHTML = `"${entrada}" não é um palíndromo ✘`;
+    }
+  }
+</script>
+
+</body>
+</html>

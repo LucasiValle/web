@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloco de Notas</title>
+<style>
+  body {
+    background: white;
+    display: flex;
+    height: 95vh;
+  }
+
+  #listaNotas {
+    width: 25%;
+    background: white;
+    border-right: 1px solid white;
+    padding: 20px;
+  }
+
+  .nota-item {
+    padding: 10px;
+    margin-bottom: 10px;
+    background: white;
+    border-radius: 6px;
+  }
+  .nota-item:hover {
+    background: #ddd;
+  }
+
+  /* Área de edição */
+  #editor {
+    width: 70%;
+    padding: 20px;
+  }
+
+  #titulo, #texto {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 5px;
+  }
+
+  #texto {
+    height: 300px;
+  }
+
+  button {
+    padding: 10px;
+  }
+
+  .remover {
+    background: red;
+    color: white;
+  }
+</style>
+</head>
+
+<body>
+
+<!-- LISTA DE NOTAS -->
+<div id="listaNotas">
+  <h2>Minhas Notas</h2>
+  <button onclick="novaNota()">+ Nova Nota</button>
+  <div id="notasContainer"></div>
+</div>
+
+<!-- EDITOR -->
+<div id="editor">
+  <h2 id="modo">Nova Nota</h2>
+
+  <input type="text" id="titulo" placeholder="Título da nota">
+
+  <textarea id="texto" placeholder="Digite sua nota..."></textarea>
+
+  <button onclick="salvarNota()">Salvar</button>
+  <button class="remover" onclick="excluirNota()">Excluir</button>
+</div>
+
+<script>
+
+  class Nota {
+    constructor(id, titulo, texto) {
+      this.id = id;
+      this.titulo = titulo;
+      this.texto = texto;
+    }
+  }
+
+  // VARIÁVEIS DE CONTROLE
+  let notas = [];
+  let notaAtual = null; // guarda a nota aberta
+
+  // CARREGAR AO INICIAR
+  window.onload = function() {
+    carregarNotas();
+    listarNotas();
+  };
+
+  // CARREGAR DO LOCAL STORAGE
+  function carregarNotas() {
+    const dados = localStorage.getItem("notas");
+
+    if (dados) {
+      notas = JSON.parse(dados);
+    }
+  }
+
+  // SALVAR NO LOCAL STORAGE
+  function salvarLocal() {
+    localStorage.setItem("notas", JSON.stringify(notas));
+  }
+
+  // LISTAR AS NOTAS NA LATERAL
+  function listarNotas() {
+    const container = document.getElementById("notasContainer");
+    container.innerHTML = "";
+
+    notas.forEach(nota => {
+      const div = document.createElement("div");
+      div.className = "nota-item";
+      div.textContent = nota.titulo || "Sem título";
+      div.onclick = () => abrirNota(nota.id);
+      container.appendChild(div);
+    });
+  }
+
+  // ABRIR NOTA PARA EDITAR
+  function abrirNota(id) {
+    notaAtual = notas.find(n => n.id === id);
+    document.getElementById("titulo").value = notaAtual.titulo;
+    document.getElementById("texto").value = notaAtual.texto;
+    document.getElementById("modo").textContent = "Editando Nota";
+  }
+
+  // CRIAR NOVA NOTA
+  function novaNota() {
+    notaAtual = null;
+    document.getElementById("titulo").value = "";
+    document.getElementById("texto").value = "";
+    document.getElementById("modo").textContent = "Nova Nota";
+  }
+
+  // SALVAR (CRIAR OU EDITAR)
+  function salvarNota() {
+    const titulo = document.getElementById("titulo").value;
+    const texto = document.getElementById("texto").value;
+
+    if (notaAtual) {
+      // editar
+      notaAtual.titulo = titulo;
+      notaAtual.texto = texto;
+    } else {
+      // criar nova
+      const id = Date.now();
+      const nova = new Nota(id, titulo, texto);
+      notas.push(nova);
+    }
+
+    salvarLocal();
+    listarNotas();
+    alert("Nota salva!");
+  }
+
+  // EXCLUIR NOTA
+  function excluirNota() {
+    if (!notaAtual) {
+      alert("Selecione uma nota para excluir!");
+      return;
+    }
+
+    if (!confirm("Tem certeza que deseja excluir esta nota?")) return;
+
+    notas = notas.filter(n => n.id !== notaAtual.id);
+    notaAtual = null;
+
+    salvarLocal();
+    listarNotas();
+    novaNota();
+    alert("Nota excluída.");
+  }
+
+</script>
+</body>
+</html>

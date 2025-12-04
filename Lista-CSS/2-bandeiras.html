@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+
+<style>
+  nav a {
+    margin-right: 15px;
+    font-size: 18px;
+    text-decoration: none;
+    color: blue;
+  }
+
+  .bandeira {
+    width: 300px;
+    height: 200px;
+    border: 2px solid #000;
+    margin: 30px 0;
+    position: relative;
+  }
+
+  #japao.bandeira {
+    background: white;
+  }
+
+  #japao.bandeira > div.circulo {
+    width: 120px;
+    height: 120px;
+    background: red;
+    border-radius: 50%;
+    position: absolute;
+    top: 40px;
+    left: 90px;
+  }
+
+  #alemanha.bandeira {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #alemanha.bandeira div:nth-child(1) {
+    background: black;
+    flex: 1;
+  }
+
+  #alemanha.bandeira div:nth-child(2) {
+    background: red;
+    flex: 1;
+  }
+
+  #alemanha.bandeira div:nth-child(3) {
+    background: gold;
+    flex: 1;
+  }
+
+  #holanda.bandeira {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #holanda.bandeira div:nth-child(1) {
+    background: red;
+    flex: 1;
+  }
+
+  #holanda.bandeira div:nth-child(2) {
+    background: white;
+    flex: 1;
+  }
+
+  #holanda.bandeira div:nth-child(3) {
+    background: blue;
+    flex: 1;
+  }
+
+  #italia.bandeira {
+    display: flex;
+    flex-direction: row;
+  }
+
+  #italia.bandeira div:nth-child(1) {
+    background: green;
+    flex: 1;
+  }
+
+  #italia.bandeira div:nth-child(2) {
+    background: white;
+    flex: 1;
+  }
+
+  #italia.bandeira div:nth-child(3) {
+    background: red;
+    flex: 1;
+  }
+
+  #brasil.bandeira {
+    background: green;
+  }
+
+  #brasil.bandeira div.losango {
+    width: 0;
+    height: 0;
+    border-left: 110px solid transparent;
+    border-right: 110px solid transparent;
+    border-top: 80px solid yellow;
+    border-bottom: 80px solid yellow;
+    position: absolute;
+    top: 20px;
+    left: 40px;
+  }
+
+  #brasil.bandeira div.circulo {
+    width: 90px;
+    height: 90px;
+    background: blue;
+    border-radius: 50%;
+    position: absolute;
+    top: 55px;
+    left: 105px;
+  }
+
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#japao">Bandeira Japão</a>
+  <a href="#alemanha">Bandeira Alemanha</a>
+  <a href="#holanda">Bandeira Holanda</a>
+  <a href="#italia">Bandeira Itália</a>
+</nav>
+
+<h2>Bandeira do Japão</h2>
+<div id="japao" class="bandeira">
+  <div class="circulo"></div>
+</div>
+
+<h2>Bandeira da Alemanha</h2>
+<div id="alemanha" class="bandeira">
+  <div></div><div></div><div></div>
+</div>
+
+<h2>Bandeira da Holanda</h2>
+<div id="holanda" class="bandeira">
+  <div></div><div></div><div></div>
+</div>
+
+<h2>Bandeira da Itália</h2>
+<div id="italia" class="bandeira">
+  <div></div><div></div><div></div>
+</div>
+
+
+</div>
+
+</body>
+</html>

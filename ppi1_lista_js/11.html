@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+  window.onload = function () {
+  const nomeSalvo = localStorage.getItem("nome");
+
+  if (nomeSalvo) {
+    document.getElementById("greeting").textContent = "Olá, " + nomeSalvo + "!";
+  }
+};
+
+  document.getElementById("saveButton").addEventListener("click", function () {
+  const nome = document.getElementById("nameInput").value;
+
+  if (nome.trim() === "") {
+    alert("Digite um nome!");
+    return;
+  }
+
+  localStorage.setItem("nome", nome);
+
+  document.getElementById("greeting").textContent = "Olá, " + nome + "!";
+});
+
+    </script>
+</body>
+</html>

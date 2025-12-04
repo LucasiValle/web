@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+// a) Quando o botão for clicado, exibir um alert()
+document.getElementById("alertButton").addEventListener("click", function () {
+  alert("Você clicou no botão!");
+});
+
+
+// b) Quando o usuário digitar no campo de texto, exibir cada tecla no console (keydown)
+document.getElementById("textInput").addEventListener("keydown", function (event) {
+  console.log("Tecla pressionada:", event.key);
+});
+
+
+// c) Ao focar o campo de texto, mudar a cor de fundo para amarelo (focus)
+document.getElementById("textInput").addEventListener("focus", function () {
+  this.style.backgroundColor = "yellow";
+});
+
+
+// d) Ao sair do campo de texto, restaurar a cor original (blur)
+document.getElementById("textInput").addEventListener("blur", function () {
+  this.style.backgroundColor = "";
+});
+
+
+// e) Quando o mouse passar sobre a div, mudar sua cor de fundo (mouseover)
+document.getElementById("hoverDiv").addEventListener("mouseover", function () {
+  this.style.backgroundColor = "lightblue";
+});
+
+
+// f) Quando o mouse sair da div, restaurar a cor original (mouseout)
+document.getElementById("hoverDiv").addEventListener("mouseout", function () {
+  this.style.backgroundColor = "";
+});
+
+
+// g) Ao escolher uma opção no select, alterar a cor de fundo da página (change)
+document.getElementById("colorSelect").addEventListener("change", function () {
+  document.body.style.backgroundColor = this.value;
+});
+
+    </script> 
+</body>
+</html>
